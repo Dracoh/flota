@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateAlquilerTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateAlquilerLabel_idAlquiler}" for="idAlquiler" />
+                    <h:inputText id="idAlquiler" value="#{alquilerController.selected.idAlquiler}" title="#{bundle.CreateAlquilerTitle_idAlquiler}" required="true" requiredMessage="#{bundle.CreateAlquilerRequiredMessage_idAlquiler}"/>
+                    <h:outputLabel value="#{bundle.CreateAlquilerLabel_fechainicio}" for="fechainicio" />
+                    <h:inputText id="fechainicio" value="#{alquilerController.selected.fechainicio}" title="#{bundle.CreateAlquilerTitle_fechainicio}" required="true" requiredMessage="#{bundle.CreateAlquilerRequiredMessage_fechainicio}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateAlquilerLabel_fechafinal}" for="fechafinal" />
+                    <h:inputText id="fechafinal" value="#{alquilerController.selected.fechafinal}" title="#{bundle.CreateAlquilerTitle_fechafinal}" required="true" requiredMessage="#{bundle.CreateAlquilerRequiredMessage_fechafinal}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.CreateAlquilerLabel_nodias}" for="nodias" />
+                    <h:inputText id="nodias" value="#{alquilerController.selected.nodias}" title="#{bundle.CreateAlquilerTitle_nodias}" required="true" requiredMessage="#{bundle.CreateAlquilerRequiredMessage_nodias}"/>
+                    <h:outputLabel value="#{bundle.CreateAlquilerLabel_valor}" for="valor" />
+                    <h:inputText id="valor" value="#{alquilerController.selected.valor}" title="#{bundle.CreateAlquilerTitle_valor}" required="true" requiredMessage="#{bundle.CreateAlquilerRequiredMessage_valor}"/>
+                    <h:outputLabel value="#{bundle.CreateAlquilerLabel_clienteDNI}" for="clienteDNI" />
+                    <h:selectOneMenu id="clienteDNI" value="#{alquilerController.selected.clienteDNI}" title="#{bundle.CreateAlquilerTitle_clienteDNI}" required="true" requiredMessage="#{bundle.CreateAlquilerRequiredMessage_clienteDNI}">
+                        <f:selectItems value="#{clienteController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateAlquilerLabel_seguroIdseguro}" for="seguroIdseguro" />
+                    <h:selectOneMenu id="seguroIdseguro" value="#{alquilerController.selected.seguroIdseguro}" title="#{bundle.CreateAlquilerTitle_seguroIdseguro}" required="true" requiredMessage="#{bundle.CreateAlquilerRequiredMessage_seguroIdseguro}">
+                        <f:selectItems value="#{seguroController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                    <h:outputLabel value="#{bundle.CreateAlquilerLabel_cocheMatricula}" for="cocheMatricula" />
+                    <h:selectOneMenu id="cocheMatricula" value="#{alquilerController.selected.cocheMatricula}" title="#{bundle.CreateAlquilerTitle_cocheMatricula}" required="true" requiredMessage="#{bundle.CreateAlquilerRequiredMessage_cocheMatricula}">
+                        <f:selectItems value="#{cocheController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{alquilerController.create}" value="#{bundle.CreateAlquilerSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{alquilerController.prepareList}" value="#{bundle.CreateAlquilerShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateAlquilerIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditCocheTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditCocheLabel_matricula}" for="matricula" />
+                    <h:inputText id="matricula" value="#{cocheController.selected.matricula}" title="#{bundle.EditCocheTitle_matricula}" required="true" requiredMessage="#{bundle.EditCocheRequiredMessage_matricula}"/>
+                    <h:outputLabel value="#{bundle.EditCocheLabel_marcaIdMarca}" for="marcaIdMarca" />
+                    <h:inputText id="marcaIdMarca" value="#{cocheController.selected.marcaIdMarca}" title="#{bundle.EditCocheTitle_marcaIdMarca}" required="true" requiredMessage="#{bundle.EditCocheRequiredMessage_marcaIdMarca}"/>
+                    <h:outputLabel value="#{bundle.EditCocheLabel_oficinaIdOficina}" for="oficinaIdOficina" />
+                    <h:inputText id="oficinaIdOficina" value="#{cocheController.selected.oficinaIdOficina}" title="#{bundle.EditCocheTitle_oficinaIdOficina}" required="true" requiredMessage="#{bundle.EditCocheRequiredMessage_oficinaIdOficina}"/>
+                    <h:outputLabel value="#{bundle.EditCocheLabel_modelo}" for="modelo" />
+                    <h:inputText id="modelo" value="#{cocheController.selected.modelo}" title="#{bundle.EditCocheTitle_modelo}" required="true" requiredMessage="#{bundle.EditCocheRequiredMessage_modelo}"/>
+                    <h:outputLabel value="#{bundle.EditCocheLabel_plazas}" for="plazas" />
+                    <h:inputText id="plazas" value="#{cocheController.selected.plazas}" title="#{bundle.EditCocheTitle_plazas}" required="true" requiredMessage="#{bundle.EditCocheRequiredMessage_plazas}"/>
+                    <h:outputLabel value="#{bundle.EditCocheLabel_nopuertas}" for="nopuertas" />
+                    <h:inputText id="nopuertas" value="#{cocheController.selected.nopuertas}" title="#{bundle.EditCocheTitle_nopuertas}" required="true" requiredMessage="#{bundle.EditCocheRequiredMessage_nopuertas}"/>
+                    <h:outputLabel value="#{bundle.EditCocheLabel_capMaletero}" for="capMaletero" />
+                    <h:inputText id="capMaletero" value="#{cocheController.selected.capMaletero}" title="#{bundle.EditCocheTitle_capMaletero}" required="true" requiredMessage="#{bundle.EditCocheRequiredMessage_capMaletero}"/>
+                    <h:outputLabel value="#{bundle.EditCocheLabel_edadmin}" for="edadmin" />
+                    <h:inputText id="edadmin" value="#{cocheController.selected.edadmin}" title="#{bundle.EditCocheTitle_edadmin}" required="true" requiredMessage="#{bundle.EditCocheRequiredMessage_edadmin}"/>
+                    <h:outputLabel value="#{bundle.EditCocheLabel_grupoidGrupo}" for="grupoidGrupo" />
+                    <h:selectOneMenu id="grupoidGrupo" value="#{cocheController.selected.grupoidGrupo}" title="#{bundle.EditCocheTitle_grupoidGrupo}" required="true" requiredMessage="#{bundle.EditCocheRequiredMessage_grupoidGrupo}">
+                        <f:selectItems value="#{grupoController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{cocheController.update}" value="#{bundle.EditCocheSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditCocheViewLink}"/>
+                <br />
+                <h:commandLink action="#{cocheController.prepareList}" value="#{bundle.EditCocheShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditCocheIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
